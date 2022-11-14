@@ -16,5 +16,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'corretto'
+          cache: 'maven'
       - name: Run Maven Test
         run: mvn -B test
