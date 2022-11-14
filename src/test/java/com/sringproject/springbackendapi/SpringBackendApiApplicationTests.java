@@ -7,7 +7,7 @@ import org.springframework.test.context.TestPropertySource;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@TestPropertySource("classpath:applicaion-test.properties")
+@TestPropertySource("classpath:application-test.properties")
 class SpringBackendApiApplicationTests {
 
     @Test
