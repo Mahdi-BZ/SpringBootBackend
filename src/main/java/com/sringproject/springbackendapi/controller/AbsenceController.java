@@ -17,9 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.sringproject.springbackendapi.model.Absences;
-import com.sringproject.springbackendapi.model.Members;
 import com.sringproject.springbackendapi.repository.AbsencesRepository;
-import com.sringproject.springbackendapi.repository.MembersRepository;
 
 @RestController
 @RequestMapping("/api/")
@@ -41,7 +39,7 @@ public class AbsenceController {
 
         List<Absences> absences = new ArrayList<Absences>();
         Pageable paging = PageRequest.of(page, SIZE);
-        Page<Absences> pageAb = absencesRepository.findAll(paging);
+        Page<Absences> pageAb = absencesRepository.findAll(AbsencesSpecs.findByCriteria(searchCriteria), paging);
 
         absences = pageAb.getContent();
 

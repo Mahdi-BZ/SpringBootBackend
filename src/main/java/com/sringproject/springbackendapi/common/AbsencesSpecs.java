@@ -19,7 +19,21 @@ public class AbsencesSpecs {
                 List<Predicate> predicates = new ArrayList<Predicate>();
 
                 if(searchCriteria.getStatus() != null) {
-                    predicates.add(criteriaBuilder.equal(root.get("status"), searchCriteria.getStatus()));
+
+                    switch (searchCriteria.getStatus()) {
+                        case "Requested":
+                            predicates.add(criteriaBuilder.isNull(root.get("rejectedAt")));
+                            predicates.add(criteriaBuilder.isNull(root.get("confirmedAt")));
+                            break;
+                        case "Confirmed":
+                            predicates.add(criteriaBuilder.isNotNull(root.get("confirmedAt")));
+                            predicates.add(criteriaBuilder.isNull(root.get("rejectedAt")));
+                            break;
+                        case "Rejected":
+                            predicates.add(criteriaBuilder.isNull(root.get("confirmedAt")));
+                            predicates.add(criteriaBuilder.isNotNull(root.get("rejectedAt")));
+                            break;
+                    }
                 }
 
                 if(searchCriteria.getType() != null) {
