@@ -63,7 +63,7 @@
                 <version>3.3.1</version>
                 <configuration>
                     <to>
-                        <image>docker.io/dockermahdibz/springboot_artifacts</image>
+                        <image>docker.io/mahdibz/springboot_artifacts</image>
                     </to>
                 </configuration>
             </plugin>
