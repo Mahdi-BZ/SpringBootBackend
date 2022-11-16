@@ -21,6 +21,7 @@ import com.sringproject.springbackendapi.repository.AbsencesRepository;
 
 @RestController
 @RequestMapping("/api/")
+@CrossOrigin(origins = "*")
 public class AbsenceController {
 
     @Autowired
@@ -45,7 +46,7 @@ public class AbsenceController {
 
         Map<String, Object> res = new HashMap<>();
         res.put("absences", absences);
-        res.put("totalPages", pageAb.getTotalPages());
+        res.put("totalAbsences", pageAb.getTotalElements());
 
         return new ResponseEntity<>(res, HttpStatus.OK);
 
